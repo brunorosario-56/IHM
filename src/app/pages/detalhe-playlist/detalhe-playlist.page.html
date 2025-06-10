@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/biblioteca"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">{{ playlist?.nome }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-bg">
+  
+  <ion-button expand="block" color="cinza" (click)="abrirSelecaoFilmes()" class="ion-margin-bottom">
+    + Adicionar Filmes
+  </ion-button>
+
+  <!-- Seleção de novos filmes -->
+<ion-grid *ngIf="modoSelecao">
+  <ion-row>
+    <ion-col size="6" *ngFor="let filme of filmesDisponiveis">
+      <ion-card (click)="adicionarFilme(filme.id)">
+        <ion-img [src]="'assets/img/' + filme.img"></ion-img>
+        <ion-card-content class="ion-text-center">
+          <strong>{{ filme.title }}</strong>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Filmes já na playlist -->
+<ion-grid *ngIf="!modoSelecao">
+  <ion-row>
+    <ion-col size="6" *ngFor="let filme of filmes">
+      <ion-card class="filme-card">
+        <ion-img [src]="'assets/img/' + filme.img"></ion-img>
+        <ion-card-content class="ion-text-center">
+          <strong>{{ filme.title }}</strong>
+          <ion-button fill="clear" color="danger" size="small" (click)="removerFilme(filme.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+</ion-content>

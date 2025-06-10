@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/eventos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Adicionar Amigo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-bg">
+  <ion-item>
+    <ion-input placeholder="Nome do amigo" [(ngModel)]="nome"></ion-input>
+  </ion-item>
+  <ion-button color="cinza" expand="block" (click)="adicionar()">Adicionar</ion-button>
+</ion-content>
+
+

@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/eventos"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Detalhes evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding content-bg" *ngIf="evento">
+
+  <!-- Info principal -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle color="light">Data do evento</ion-card-subtitle>
+      <ion-card-title>{{ evento.nome }}</ion-card-title>
+      <ion-note>{{ evento.data | date: 'fullDate' }}</ion-note>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- Convidados -->
+      <p><strong>Convidados:</strong></p>
+      <ion-item *ngFor="let amigo of convidados">
+        <ion-icon name="person-circle" slot="start"></ion-icon>
+        <ion-label>{{ amigo.nome }}</ion-label>
+      </ion-item>
+
+      <!-- Filmes -->
+      <p class="espaco-top"><strong>Filmes sugeridos:</strong></p>
+      <div *ngIf="evento.filmes.length === 0" class="info-box">
+        Nenhum filme ainda selecionado.
+      </div>
+      <ion-card *ngFor="let filme of filmes">
+        <ion-img [src]="'assets/img/' + filme.img"></ion-img>
+        <ion-card-content>
+          {{ filme.title }}
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Votação -->
+      <p class="espaco-top"><strong>Votação:</strong></p>
+
+      <ion-card *ngFor="let filme of filmes" class="filme-card">
+        <ion-img [src]="'assets/img/' + filme.img"></ion-img>
+
+        <ion-card-content class="ion-text-center">
+          <h3>{{ filme.title }}</h3>
+
+          <ion-badge color="success" class="ion-margin-bottom">
+            {{ evento.votos?.[filme.id] || 0 }} voto(s)
+          </ion-badge>
+
+          <ion-button fill="outline" size="small" color="cinza" (click)="votar(filme.id)" *ngIf="!votacaoEncerrada">
+            Votar neste
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+
+      <div *ngIf="!temVotos()" class="info-box">
+        A votação ainda não começou.
+      </div>
+
+      
+      <ion-button expand="block" color="success" (click)="terminarVotacao()" *ngIf="temVotos() && !votacaoEncerrada">
+        Terminar Votação
+      </ion-button>
+      <ion-button expand="block" color="medium" disabled *ngIf="temVotos() && votacaoEncerrada">
+        Votação encerrada
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

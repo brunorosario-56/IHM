@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/inicio" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Biblioteca</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-bg">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let playlist of playlists">
+        <ion-card button (click)="abrirPlaylist(playlist.id)" class="playlist-card">
+          <ion-card-content class="ion-text-center">
+            <ion-icon name="folder-outline" size="large" class="icon-folder"></ion-icon>
+            <div class="playlist-nome">{{ playlist.nome }}</div>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="cinza" (click)="novaPlaylist()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

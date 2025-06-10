@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/eventos"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Adicionar Sessão</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="ligth" class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="criarSessao()">
+
+    <!-- Nome do Evento -->
+    <div class="secao">
+      <ion-label class="titulo-campo">Nome do evento</ion-label>
+      <ion-input formControlName="nome" class="input-destaque" placeholder="Dar um nome ao evento...">
+      </ion-input>
+    </div>
+
+    <!-- Playlists -->
+    <div class="secao-titulo">Biblioteca:</div>
+
+    <ion-list>
+     <ion-item
+        *ngFor="let playlist of playlists"
+        color="dark"
+        (click)="selecionarPlaylist(playlist.id)"
+        [class.selecionada]="playlistSelecionada === playlist.id"
+        >
+        <ion-icon name="folder-outline" slot="start" color="light"></ion-icon>
+        <ion-label>{{ playlist.nome }}</ion-label>
+        <ion-icon
+          *ngIf="playlistSelecionada === playlist.id"
+          name="checkmark-circle"
+          slot="end"
+          color="success"
+        ></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <!-- Filmes da playlist selecionada -->
+    <div *ngIf="filmesDaPlaylist.length > 0" class="secao-titulo">
+      Seleciona os filmes:
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let filme of filmesDaPlaylist">
+          <ion-card
+            [class.selecionado]="filmesSelecionados.has(filme.id)"
+            (click)="toggleFilme(filme.id)">
+            <ion-img [src]="'assets/img/' + filme.img"></ion-img>
+            <ion-card-content class="ion-text-center">
+              <strong>{{ filme.title }}</strong>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <!-- Convidar amigos -->
+    <div class="secao-titulo">Convidar:</div>
+
+      <ion-list>
+        <ion-item *ngFor="let amigo of amigos" color="dark" (click)="toggleAmigo(amigo.id)">
+          <ion-avatar slot="start">
+            <ion-icon name="person-circle-outline" size="large" color="light"></ion-icon>
+          </ion-avatar>
+          <ion-label>{{ amigo.nome }}</ion-label>
+          <ion-checkbox slot="end" [checked]="selecionados.has(amigo.id)" color="primary"></ion-checkbox>
+        </ion-item>
+      </ion-list> 
+
+    <!-- Mensagem opcional -->
+    <div class="secao">
+      <ion-label class="titulo-campo">Mensagem opcional:</ion-label>
+      <ion-textarea
+        formControlName="mensagem"
+        placeholder="Adicionar uma mensagem..."
+        autoGrow="true"
+        class="mensagem-box"
+      ></ion-textarea>
+    </div>
+
+    <ion-button expand="block" color="cinza" type="submit" class="ion-margin-top">
+      Criar Sessão
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Filmes encontrados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let filme of resultados">
+        <ion-card class="filme-card" routerLink="/detalhe-filme/{{filme.id}}">
+          <img [src]="'assets/img/' + filme.img" class="filme-card-img" />
+          <ion-card-content>
+            <h3>{{ filme.title }}</h3>
+            <p><small>{{ filme.atualizacao }}</small></p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-nav defaultHref="/tabs/detalhe-filme"></ion-nav>
+
+    </ion-buttons>
+    <ion-title color="dark">Partilhar com</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-bg">
+
+  <!-- Lista de amigos -->
+  <ion-list *ngIf="amigos.length > 0">
+    <ion-item 
+      *ngFor="let amigo of amigos" 
+      (click)="partilharCom(amigo)" 
+      button
+      lines="full" 
+      color="dark"
+    >
+      <ion-avatar slot="start">
+        <ion-icon name="person-circle" size="large" color="light"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ amigo.nome }}</h2>
+        <p>Tocar para partilhar crítica</p>
+      </ion-label>
+      <ion-icon slot="end" name="send-outline" color="light"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <!-- Caixa de mensagem -->
+  <ion-card class="mensagem-card">
+    <ion-card-header>
+      <ion-card-title color="light">Mensagem opcional</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-textarea 
+        placeholder="Adicionar uma mensagem..." 
+        [(ngModel)]="mensagem" 
+        fill="outline"
+        autoGrow="true"
+      ></ion-textarea>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botão para adicionar amigos -->
+  <ion-button expand="block" color="cinza" routerLink="/tabs/adicionar-amigo" class="ion-margin-top">
+    Adicionar Amigo
+  </ion-button>
+
+</ion-content>

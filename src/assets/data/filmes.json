@@ -1,0 +1,80 @@
+{
+  "filme1": {
+    "id": "1",
+    "title": "Inception",
+    "categoria": "filme",
+    "img": "inception.jpg",
+    "atualizacao": "Updated yesterday",
+    "ano": "2010",
+    "duracao": "2h 28min",
+    "classificacao": "PG-13",
+    "sinopse": "Um ladrão especialista em invadir os sonhos das pessoas é contratado para plantar uma ideia na mente de um executivo.",
+    "plataformas": ["Netflix", "HBO Max"],
+    "generos": ["Sci-Fi", "Ação", "Suspense"]
+  },
+  "filme2": {
+    "id": "2",
+    "title": "Stranger Things",
+    "categoria": "serie",
+    "img": "stranger.jpg",
+    "atualizacao": "Updated 2 days ago",
+    "ano": "2016",
+    "duracao": "4 temporadas",
+    "classificacao": "16+",
+    "sinopse": "Um grupo de crianças enfrenta forças sobrenaturais numa pequena cidade onde um menino desaparece misteriosamente.",
+    "plataformas": ["Netflix"],
+    "generos": ["Fantasia", "Terror", "Drama"]
+  },
+  "filme3": {
+    "id": "3",
+    "title": "Oppenheimer",
+    "categoria": "filme",
+    "img": "oppenheimer.jpg",
+    "atualizacao": "Updated yesterday",
+    "ano": "2023",
+    "duracao": "3h",
+    "classificacao": "M/14",
+    "sinopse": "A história do físico J. Robert Oppenheimer e o desenvolvimento da bomba atómica durante a Segunda Guerra Mundial.",
+    "plataformas": ["HBO Max", "Prime Video"],
+    "generos": ["Biografia", "História", "Drama"]
+  },
+  "filme4": {
+    "id": "4",
+    "title": "The Crown",
+    "categoria": "serie",
+    "img": "crown.jpg",
+    "atualizacao": "Updated 3 days ago",
+    "ano": "2016",
+    "duracao": "6 temporadas",
+    "classificacao": "M/12",
+    "sinopse": "A história do reinado da Rainha Isabel II e os eventos históricos que marcaram o Reino Unido.",
+    "plataformas": ["Netflix"],
+    "generos": ["Drama", "História", "Política"]
+  },
+  "filme5": {
+    "id": "5",
+    "title": "Barbie",
+    "categoria": "popular",
+    "img": "barbie.jpg",
+    "atualizacao": "Updated yesterday",
+    "ano": "2023",
+    "duracao": "1h 54min",
+    "classificacao": "M/12",
+    "sinopse": "Barbie embarca numa jornada fora do seu mundo cor-de-rosa para descobrir o verdadeiro significado da vida.",
+    "plataformas": ["HBO Max", "Apple TV"],
+    "generos": ["Comédia", "Fantasia", "Aventura"]
+  },
+  "filme6": {
+    "id": "6",
+    "title": "Avatar 2",
+    "categoria": "popular",
+    "img": "avatar.jpg",
+    "atualizacao": "Updated 2 days ago",
+    "ano": "2022",
+    "duracao": "3h 12min",
+    "classificacao": "M/12",
+    "sinopse": "Jake Sully e Neytiri enfrentam novos desafios no oceano de Pandora para proteger a sua família.",
+    "plataformas": ["Disney+", "Apple TV"],
+    "generos": ["Ficção Científica", "Ação", "Fantasia"]
+  }
+}

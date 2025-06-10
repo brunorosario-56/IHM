@@ -1,0 +1,56 @@
+# Diretórios de dependências
+node_modules/
+platforms/
+plugins/
+www/
+
+# Arquivos de ambiente
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
+# Arquivos de cache e logs
+.npm/
+.yarn/
+.yarn.lock
+.pnpm/
+.pnpm-lock.yaml
+.yarn-integrity
+package-lock.json
+yarn.lock
+
+# Arquivos de configuração do IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de build
+dist/
+out/
+*.tmp
+*.log
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração específicos do Ionic
+ionic.config.json
+capacitor.config.json
+
+# Arquivos de configuração específicos do Cordova
+config.xml
+resources/
+
+# Arquivos de configuração específicos do Angular
+angular.json
+tsconfig.json
+tsconfig.app.json
+tsconfig.spec.json
+tslint.json
+
+# Arquivos de configuração específicos do TypeScript
+*.tsbuildinfo
+
+# Arquivos de configuração específicos do Jest
+coverage/

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/inicio" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Calendário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-bg">
+
+  <!-- Calendário -->
+  <ion-item>
+    <p class="ion-text-center titulo-campo">Escolha a data do evento:</p>
+    <ion-datetime 
+      presentation="date" 
+      [(ngModel)]="dataSelecionada" 
+      (ionChange)="aoSelecionarData($event)">
+    </ion-datetime>
+  </ion-item>
+
+  <ion-list *ngIf="eventos.length > 0">
+    <ion-item *ngFor="let evento of eventos">
+      <ion-label>
+        <h2>{{ evento.nome }}</h2>
+        <p>{{ evento.data | date: 'shortDate' }}</p>
+      </ion-label>
+      <ion-button 
+        fill="clear" 
+        [routerLink]="['/tabs/detalhe-evento', evento.id]">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="eventos.length === 0" class="ion-text-center ion-padding">
+    <ion-label>Sem nenhum evento para este dia</ion-label>
+  </ion-card>
+
+  <ion-button expand="block" color="cinza" routerLink="/tabs/adicionar-sessao">
+    <ion-icon name="add" slot="start"></ion-icon>
+    Adicionar Sessão
+  </ion-button>
+</ion-content>

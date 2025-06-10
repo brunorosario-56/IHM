@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="film-outline"></ion-icon> TotalMovie
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Pesquisa -->
+  <ion-searchbar
+    placeholder="Pesquisar"
+    showCancelButton="focus"
+    [(ngModel)]="termoDigitado"
+    (ionInput)="mostrarSugestoes = true"
+    (ionFocus)="mostrarSugestoes = true"
+    (ionBlur)="mostrarSugestoes = false"
+    (ionChange)="pesquisar(termoDigitado)">
+  </ion-searchbar>
+
+  <!-- Mostrar apenas sugestões filtradas SE estiver a escrever -->
+  <ion-list *ngIf="mostrarSugestoes && termoDigitado.trim() && sugestoesFiltradas.length > 0">
+    <ion-list-header>
+      <ion-label>Sugestões</ion-label>
+    </ion-list-header>
+    <ion-item
+      button
+      *ngFor="let termo of sugestoesFiltradas"
+      (click)="pesquisar(termo)">
+      {{ termo }}
+    </ion-item>
+  </ion-list>
+
+  <!-- Mostrar pesquisas recentes SÓ se o campo estiver focado e vazio -->
+  <ion-list *ngIf="mostrarSugestoes && !termoDigitado.trim() && pesquisasRecentes.length > 0">
+    <ion-list-header>
+      <ion-label>Pesquisas recentes</ion-label>
+    </ion-list-header>
+    <ion-item
+      button
+      *ngFor="let termo of pesquisasRecentes"
+      (click)="pesquisar(termo)">
+      {{ termo }}
+    </ion-item>
+  </ion-list>
+
+  <!-- FILMES -->
+  <ion-text color="light"><h2>Filmes</h2></ion-text>
+  <ion-row class="carrossel">
+    <ion-col size="4" *ngFor="let f of filmes">
+      <ion-card>
+        <img [src]="'assets/img/' + f.img" />
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- SÉRIES -->
+  <ion-text color="light"><h2>Séries</h2></ion-text>
+  <ion-row class="carrossel">
+    <ion-col size="4" *ngFor="let s of series">
+      <ion-card>
+        <img [src]="'assets/img/' + s.img" />
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- POPULARES -->
+  <ion-text color="light"><h2>Populares</h2></ion-text>
+  <ion-row class="carrossel">
+    <ion-col size="4" *ngFor="let p of populares">
+      <ion-card>
+        <img [src]="'assets/img/' + p.img" />
+        <!--<ion-card-content>
+          <b>{{ p.title }}</b><br />
+          <small>{{ p.atualizacao }}</small>
+        </ion-card-content>-->
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

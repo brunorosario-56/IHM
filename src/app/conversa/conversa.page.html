@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/inicio" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">Conversas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding content-bg" color="ligth">
+  <ion-list *ngIf="conversas.length > 0">
+    <ion-item *ngFor="let conversa of conversas">
+      <ion-avatar slot="start">
+        <ion-icon name="person-circle" size="large" color="dark"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ conversa.para }}</h2>
+        <p>{{ conversa.mensagem || '(sem mensagem)' }}</p>
+      </ion-label>
+      <ion-note slot="end">{{ conversa.dataEnvio | date: 'short' }}</ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-text color="light" *ngIf="conversas.length === 0">
+    <p>Sem mensagens ainda.</p>
+  </ion-text>
+</ion-content>

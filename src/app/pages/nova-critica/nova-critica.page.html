@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Escrever crítica</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="criticaForm" (ngSubmit)="guardarCritica()">
+    <ion-item>
+      <ion-textarea
+        placeholder="Escreve a tua opinião sobre o filme"
+        formControlName="texto"
+        autoGrow="true"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-text color="danger" *ngIf="criticaForm.get('texto')?.invalid && criticaForm.get('texto')?.touched">
+      <p *ngIf="criticaForm.get('texto')?.errors?.['required']">A crítica é obrigatória.</p>
+      <p *ngIf="criticaForm.get('texto')?.errors?.['minlength']">Mínimo: 10 caracteres.</p>
+    </ion-text>
+
+    <ion-button expand="full" type="submit" [disabled]="!criticaForm.valid">
+      Guardar Crítica
+    </ion-button>
+  </form>
+</ion-content>
